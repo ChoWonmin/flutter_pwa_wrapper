@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "1086491454671",
+    "project_id": "kalo-84e55",
+    "storage_bucket": "kalo-84e55.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1086491454671:android:dcc34ba8e09569d4505bba",
+        "android_client_info": {
+          "package_name": "com.kaloidea.kalo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1086491454671-lpv5ede22seeihcj02t3488i59fdolaj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA8XhpniOArwjcRvs_kukUhIRRSVcvSi7Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1086491454671-lpv5ede22seeihcj02t3488i59fdolaj.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1086491454671-3nmlgltofv23sgmanl8p97jabe43c606.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.kaloidea.kalo"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

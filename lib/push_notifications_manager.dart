@@ -7,11 +7,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
-
 class PushNotificationsManager {
   static late PushNotificationsManager _instance;
   late FirebaseMessaging _firebaseMessaging;
-  FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
+  FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+      FlutterLocalNotificationsPlugin();
   bool _initialized = false;
   late WebViewController _webviewController;
 
@@ -23,9 +23,12 @@ class PushNotificationsManager {
     return _instance;
   }
 
-  Future<bool> init(WebViewController webviewController, bool shouldAskForPushPermission) async {
+  Future<bool> init(WebViewController webviewController,
+      bool shouldAskForPushPermission) async {
     _webviewController = webviewController;
-    if(_initialized) { return false; }
+    if (_initialized) {
+      return false;
+    }
 
     FirebaseMessaging.onMessageOpenedApp.listen(_handleMessage);
     FirebaseMessaging.onMessage.listen(_handleForegroundMessage);
@@ -33,16 +36,14 @@ class PushNotificationsManager {
 
     var bool = false;
 
-    if(Platform.isAndroid) {
+    if (Platform.isAndroid) {
       bool = true;
       flutterLocalNotificationsPlugin.initialize(
-        const InitializationSettings(
-          android: AndroidInitializationSettings('@mipmap/ic_launcher'),
-        ),
-        onDidReceiveNotificationResponse: onSelectNotification
-      );
+          const InitializationSettings(
+            android: AndroidInitializationSettings('@mipmap/ic_launcher'),
+          ),
+          onDidReceiveNotificationResponse: onSelectNotification);
     }
-
 
     if (Platform.isIOS && !shouldAskForPushPermission) {
       bool = await requestPermission();
@@ -89,12 +90,10 @@ class PushNotificationsManager {
           notification.body,
           const NotificationDetails(
             android: AndroidNotificationDetails('pwa_wrapper', 'PWA wrapper',
-              importance: Importance.high,
-              sound: RawResourceAndroidNotificationSound('notification')
-            ),
+                importance: Importance.high,
+                sound: RawResourceAndroidNotificationSound('notification')),
           ),
-          payload: jsonEncode(message.data)
-      );
+          payload: jsonEncode(message.data));
     }
   }
 
@@ -102,7 +101,7 @@ class PushNotificationsManager {
     String? payload = response?.payload;
     debugPrint('onSelectNotification: $payload');
     var data = jsonDecode(payload!);
-    if(data['url'] != null) {
+    if (data['url'] != null) {
       _webviewController.loadRequest(data['url']);
     }
   }
@@ -110,5 +109,4 @@ class PushNotificationsManager {
   Future<String?> getToken() {
     return _firebaseMessaging.getToken();
   }
-
 }
