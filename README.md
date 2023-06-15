@@ -75,4 +75,4 @@ See [splash_screen_view](https://pub.dev/packages/splash_screen_view)
 
 Signed with `/Applications/Android\ Studio.app/Contents/jre/jdk/Contents/Home/bin/keytool -genkey -v -keystore keys/keystore.jks -keyalg RSA -keysize 2048 -validity 10000 -alias FlutterApp`
 
-`flutter build appbundle --release --no-tree-shake-icons && open build/app/outputs/bundle/release/`
+`flutter build appbundle --release --no-tree-shake-icons && open build/app/outputs/bundle/release/`# kalo-flutter-1.0
